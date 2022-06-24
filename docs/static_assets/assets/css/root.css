@@ -1,0 +1,53 @@
+:root{
+  --device-width-sp: 576px;
+  --device-width-tablet: 768px;
+  --device-width-pc: 950px;
+  --device-width-pc-wrap: 1280px;
+  --fontSize-base: 1rem;
+  --fontSize-xs: calc(1rem * (12/16));
+  --fontSize-s: calc(1rem * (12/16));
+  --fontSize-ms: calc(1rem * (13/16));
+  --fontSize-m: calc(1rem * (14/16));
+  --fontSize-ml: calc(1rem * (18/16));
+  --fontSize-l: calc(1rem * (20/16));
+  --fontSize-xl: calc(1rem * (22/16));
+
+  --color-key  :#dd2523;
+  --color-pink :#F1847D;
+  --color-black: #30353a;
+  --color-link:#0077C3;
+  --color-border:#c3c3c3;
+  --color-gray:#666;
+  --color-gray_light:#E7E7E7;
+  
+  --color-note:#50555A;
+  --color-cream:#FCF3E6;
+
+
+  --gutter-contents: 10px;
+
+  /* under */
+  --color-gray_second:#999;
+  --color-gray_lightest: #f2f2f2;
+  --color-ichiji: #E38C00;
+  --color-kanwa: #549E09;
+  --color-border_gray_light: #e2e2e2;
+  
+}
+
+
+
+@media screen and (min-width:950px) {
+  :root{
+    /* --fontSize-xs: calc(1rem * (12/16)); */
+    --fontSize-s: calc(1rem * (14/16));
+    --fontSize-ms: calc(1rem * (14/16));
+    --fontSize-m: calc(1rem * (17/16));
+    /* --fontSize-ml: calc(1rem * (18/16)); */
+    /* --fontSize-l: calc(1rem * (20/16)); */
+    --fontSize-xl: calc(1rem * (28/16));
+
+
+    --gutter-contents: 30px;
+  }
+}

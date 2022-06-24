@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<!-- 1.maximum-scaleの数値を1にすると拡大縮小しなくなる -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes,minimal-ui" />
+<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/canonical.js"></script>
+	<meta name="format-detection" content="telephone=no">
+	
+	<meta charset="UTF-8">
+	<meta name="keywords" content="エイチ・エス損害保険株式会社,取扱保険会社,損害保険,ほけんの窓口,通信販売">
+	<meta name="description" content="エイチ・エス損害保険株式会社の保険商品をお探しなら「ほけんの窓口 通信販売」にお任せください！エイチ・エス損害保険株式会社保険商品はもちろん、その他お客さまにあった保険をご提案いたします。選んで納得・安心の保険選び比較サイト、もちろん保険の資料請求は何度でも無料！">
+
+	<!-- css_Area -->
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/css/reset.css">
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/css/layout.css">
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/css/common.css">
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/css/style.css">
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/css/list.css">
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/css/request.css">
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/css/page.css">
+	<style>
+		/*list.cssから*/
+		#list_tbl table {
+			border-bottom: none !important;
+		}
+		#list_tbl tr.tr-1 td:first-child{
+			vertical-align: top;
+		}
+		#list_tbl tbody .check {
+			background: #deefff;
+			line-height: 1;
+		}
+
+		/*request.cssから*/
+		#request table th,
+		#request table td {
+			padding: 1em;
+			vertical-align: middle;
+			/*border-bottom: none;*/
+		}
+		#list_tbl tr + tr td{
+			border-top: none !important;
+		}
+		#request table td img {
+			float: none;
+		}
+		#request table td:nth-child(2) {
+			text-align: center;
+			width: 100px;
+			border: none;
+			border-top: none;
+			border-left: none;
+		}
+
+		/*ページ固有*/
+		#list_tbl tbody tr.tr-1 .check,
+		#list_tbl tbody tr.tr-2 .check,
+		#list_tbl tbody tr.tr-3 .check{
+			border-left: none;
+			height: 85px;
+		}
+		#list_tbl tbody tr.tr-2 .check {
+			background-color: #deefff;
+		}
+		#list_tbl tbody tr.tr-1 .check,
+		#list_tbl tbody tr.tr-3 .check{
+			background-color: #ffdedb;
+		}
+		#list_tbl input[type="checkbox"] + label {
+			height: calc(60px + 2em);
+			cursor: pointer;
+		}
+		#list_tbl tr.tr-1 td.check{
+			border-left: none !important;
+		}
+		#list_tbl tr.tr-2 td.check{
+			border-bottom: 1px solid #cfcfcf !important;
+		}
+		#list_tbl tr.tr-1 td.check,
+		#list_tbl tr.tr-2 td.check,
+		#list_tbl tr.tr-3 td.check{
+			padding: 0 !important;
+		}
+		#list_tbl tr td.check.none{
+			background: #efefef;
+		}
+		#list_tbl tr.tr-1 td.check a,
+		#list_tbl tr.tr-2 td.check a,
+		#list_tbl tr.tr-2 td.check p.off,
+		#list_tbl tr.tr-3 td.check a,
+		#list_tbl tr.tr-3 td.check p.off{
+			height: calc(60px + 2em);
+			padding-top: 0;
+			padding-bottom: 0;
+			margin-bottom: 0;
+		}
+		#list_tbl tr.tr-1 td.check,
+		#list_tbl tr.tr-3 td.check{
+			transition: all 0.25s;
+		}
+		#list_tbl tr.tr-1 td.check:hover,
+		#list_tbl tr.tr-2 td.check:hover,
+		#list_tbl tr.tr-3 td.check:hover{
+			opacity: 0.7;
+		}
+		#list_tbl tr.tr-2 td.check.none:hover,
+		#list_tbl tr.tr-3 td.check.none:hover{
+			opacity: 1;
+		}
+		#list_tbl tr.tr-1 td.check:hover a,
+		#list_tbl tr.tr-2 td.check:hover a,
+		#list_tbl tr.tr-3 td.check:hover a{
+			text-decoration: none;
+		}
+		#list_tbl tr.tr-1 td.check a,
+		#list_tbl tr.tr-2 td.check a,
+		#list_tbl tr.tr-2 td.check p.off,
+		#list_tbl tr.tr-3 td.check a,
+		#list_tbl tr.tr-3 td.check p.off{
+			display: table;
+			width: 100%;
+		}
+		#list_tbl tr.tr-3 td.check p.off{
+			color: #777;
+		}
+		#list_tbl tr.tr-1 td.check a span,
+		#list_tbl tr.tr-2 td.check p.off span,
+		#list_tbl tr.tr-3 td.check a span,
+		#list_tbl tr.tr-3 td.check p.off span{
+			display: table-cell;
+			vertical-align: middle;
+			padding-left: 0.5em;
+			padding-right: 0.5em;
+			line-height: 1.4;
+		}
+		#list_tbl tr.tr-2 td.check .textbox{
+			display:table;
+			vertical-align:middle;
+			width:100%;
+			line-height:1.4;
+		}
+		@media screen and (max-width: 640px){
+			#request table td img {
+				margin: 0 auto;
+			}
+			#list_tbl input[type="checkbox"] + label {
+				height: 60px;
+				cursor: pointer;
+			}
+			#list_tbl tr.tr-1,
+			#list_tbl tr.tr-2 {
+				margin-bottom: 0;
+			}
+			#list_tbl tr.tr-2,
+			#list_tbl tr.tr-3 {
+				border: none !important;
+			}
+			#list_tbl tr.tr-1 td.check{
+				position: relative;
+				z-index: 3;
+				/*border-right: 1px solid #cfcfcf !important;*/
+			}
+			#list_tbl tr.tr-1 td.check,
+			#list_tbl tr.tr-2 td.check,
+			#list_tbl tr.tr-3 td.check{
+				width: 33.3% !important;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+			}
+			#list_tbl tr.tr-1 td.check a,
+			#list_tbl tr.tr-2 td.check a,
+			#list_tbl tr.tr-2 td.check p.off,
+			#list_tbl tr.tr-3 td.check a,
+			#list_tbl tr.tr-3 td.check p.off{
+				height: calc(30px + 2em);
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+			#list_tbl tr.tr-2 td.check{
+				position: relative;
+				margin-top: -61px;
+				margin-left: 33.3%;
+				border: 1px solid #cfcfcf !important;
+				z-index: 3;
+			}
+			#list_tbl tr.tr-3 td.check{
+				position: relative;
+				margin-top: -61px;
+				margin-left: 66.6%;
+				border-top: 1px solid #cfcfcf !important;
+				border-right: 1px solid #cfcfcf !important;
+			}
+			#list_tbl tr.tr-2 td.check .textbox{
+				margin-top: 1em;
+			}
+		}
+	</style>
+
+
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/jquery.bxslider.min.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/common.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.cookie/1.4.0/jquery.cookie.min.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/responsive_tab.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/fixHeight.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/placeholder.js"></script>
+	<script>
+	$(function() {
+	$('[placeholder]').ahPlaceholder({
+		placeholderAttr : 'placeholder',
+		likeApple : false
+		});
+
+        //PCのsafarでtableの行を均等にする
+        var mediaQuery = matchMedia('(min-width: 641px)');
+        // ページが読み込まれた時に実行
+        handle(mediaQuery);
+        // ウィンドウサイズが変更されても実行される
+        mediaQuery.addListener(handle);
+        function handle(mq) {
+            if (mq.matches) {
+                // ウィンドウサイズが641px以上のとき
+                $('.tr-1').each(function(){
+                    var tdH = $(this).find('td:first-child').height() / 3 - 24;
+                    $(this).find('td:nth-child(2)').height(tdH);
+                    $(this).next('.tr-2').find('td').height(tdH);
+                    $(this).next('.tr-2').next('.tr-3').find('td').height(tdH);
+                });
+            } else {
+                $('.tr-1').each(function(){
+                    $(this).find('td:nth-child(2)').height('59px');
+                    $(this).next('.tr-2').find('td').height('59px');
+                    $(this).next('.tr-2').next('.tr-3').find('td').height('59px');
+                });
+            }
+        }
+	});
+	</script>
+
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<script type="text/javascript" src="/tsuhan/js/backgroundSize.js"></script>
+	<script>
+	$(function() {
+	$('#present_area').css( "background-size", "cover" );
+	//$('#present_area').css( "background-size", "contain" );
+	});
+	</script>
+
+	<script type="text/javascript" src="/tsuhan/js/selectivizr-min.js"></script>
+	<script type="text/javascript" src="/tsuhan/js/PIE.js"></script>
+	<script>
+		$(function() {
+			if (window.PIE) {
+				//下記のセレクタにPIE.jsを適用させる
+				$('#header').each(function() {PIE.attach(this);});
+			}
+		});
+	</script>
+	<![endif]-->
+	<link id="favicon" rel="shortcut icon" type="image/x-icon" href="https://www.hokennomadoguchi.com/tsuhan/images/favicon.png" />
+	<title>エイチ・エス損害保険株式会社 | ほけんの窓口 通信販売</title>
+</head>
+<body>
+
+
+
+<!-- //////////////////// HEADER START //////////////////// -->
+<script>
+$(function(){
+/*
+$('.sp_header_tel').click(function(){
+$('.fixed_black').fadeIn();
+$('.fixed_sp_tel').fadeIn();
+});
+
+
+$('.fixed_black').click(function(){
+	$(this).fadeOut();
+	$('.fixed_sp_tel').fadeOut();
+});
+
+$('.fixed_sp_tel .close ').click(function(){
+	$('.fixed_black').fadeOut();
+	$('.fixed_sp_tel').fadeOut();
+});
+*/
+});
+</script>
+
+
+<div id="header">
+
+
+<!-- SP_AB -->
+<!-- 2020.04.29 ヘッダー変更 <div class="sp_header_tel_top">
+	<div class="sp_header_tel_in">^^>
+		<!-- <img src="/tsuhan/images/header_call.png" width="320" height="50" alt="お電話でのお問合わせ・ご相談はこちら"> -->
+		<!--<a href="javascript:void(0)" onclick="ga('send', 'event', 'SPヘッダ', 'phone-number-tap', '電話リンクタップ（お電話でご相談）');"><img class="sp_header_tel sp" src="/tsuhan/images/sp_header_comp.png" width="380" alt="お電話でのお問合わせ・ご相談はこちら"></a>-->
+		<!-- 2020.04.29 ヘッダー変更 <a href="tel:0120-497-721" onClick="ga('send', 'event', 'SPヘッダ', 'phone-number-tap', '電話リンクタップ（お電話でご相談）');"><img class="sp_header_tel sp" src="/tsuhan/images/sp_header_comp.png" width="380" alt="お電話でのお問合わせ・ご相談はこちら"></a>
+	</div>
+</div>-->
+<!-- //SP_AB -->
+
+
+<div id="header_in" class="clearfix">
+
+	<!-- ↓↓↓ 2020.04.29 ヘッダー変更 ↓↓↓ -->
+	<div class="header_tel_pc">
+		<div class="header_tel_pc_inner">
+			<a href="../../index.html" target="_blank" onClick="ga('send', 'event', 'ヘッダ', 'header_top_bnr', 'オンライン保険相談');"><img class="pc" src="https://www.hokennomadoguchi.com/tsuhan/images/header_top_bnr_pc.jpg" alt="おうちで気軽に ほけんの窓口 オンライン保険相談"><img class="sp" src="https://www.hokennomadoguchi.com/tsuhan/images/header_top_bnr_sp.jpg" alt="おうちで気軽に ほけんの窓口 オンライン保険相談"></a>
+		</div>
+    </div>
+    <!-- ↑↑↑ 2020.04.29 ヘッダー変更 ↑↑↑ -->
+
+	<h1 class="header_logo">
+		<a href="../index.html" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ','EventAction': 'InternalLink', 'EventLabel': 'ロゴ'});">
+			<img class="pc" src="https://www.hokennomadoguchi.com/tsuhan/images/logo.png" alt="ほけんの窓口　通信販売">
+			<img class="sp" src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sp.png" alt="ほけんの窓口　通信販売">
+		</a>
+	</h1>
+
+	<div class="head_request">
+		<!--
+		<div class="sp sp_header_tel">
+			<img src="/tsuhan/images/btn_sp_tel.png" alt="お問い合わせ・ご相談はこちら" width="33">
+		</div>
+		<div class="request_cart">
+			<a href="/tsuhan/carts/itemlist/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '資料請求リストを見る'});">
+				<img class="pc" src="/tsuhan/images/btn_cart.png" height="42" width="128" alt="資料請求リストを見る">
+				<img class="sp" src="/tsuhan/images/btn_sp_cart.png" alt="資料請求リストを見る" width="33">
+			</a>
+		</div>
+		-->
+		<div class="header_tel">
+			<img src="https://www.hokennomadoguchi.com/tsuhan/images/header_tel_2.png" alt="お問合せ・ご相談はこちら 営業時間 9:00～17:30 通話料無料 0120-497-721">
+		</div>
+
+		<div class="menu sp">
+			<img src="https://www.hokennomadoguchi.com/tsuhan/images/btn_sp_menu.png" alt="" width="33">
+		</div>
+
+		<div class="header_links pc">
+			<ul>
+				<!-- 2020.04.29 ヘッダー変更 <li><a href="https://www.hokennomadoguchi.com/" target="_blank" class="blank" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '店舗で相談する'});">店舗で相談する</a></li> -->
+				<li><a href="https://www.hokennomadoguchi.com/tsuhan/sitemap/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'サイトマップ'});">サイトマップ</a></li>
+				<li><a href="https://mypage.hokennomadoguchi.com/login?_ga=1.11941245.813613822.1469690905" target="_blank" class="mypage" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'マイページ'});">マイページ</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+    <!-- 2020.04.29 ヘッダー変更 <a href="https://www.hokennomadoguchi.com/" target="_blank" onclick="dataLayer.push({'event': 'FireEvent_InternalLink', 'EventCatagory': 'ヘッダ','EventAction': 'InternalLink', 'EventLabel': 'InternalLink｜電話で店舗に相談する'});">
+        <div id="consult_btn" class="over sp">電話で店舗に相談する</div>
+    </a>-->
+    <!-- 2021.01.08 ヘッダー変更 <div class="header_tel_sp sp">
+		<img src="/tsuhan/images/header_tel_2.png" alt="お問合せ・ご相談はこちら 営業時間 9:00～17:30 通話料無料 0120-497-721">
+	</div>-->
+	<!-- ↓↓↓2020.04.29 ヘッダー変更 ↓↓↓ -->
+	<div class="header_tel_sp sp">
+		<a href="tel:0120497721"><img src="https://www.hokennomadoguchi.com/tsuhan/images/header_tel_2.png" alt="お問合せ・ご相談はこちら 営業時間 9:00～17:30 通話料無料 0120-497-721"></a>
+	</div>
+	<!-- ↑↑↑ 2020.04.29 ヘッダー変更 ↑↑↑ -->
+
+</div>
+
+<div id="header_nav">
+	<ul class="clearfix">
+		<!--
+		<li><a href="/tsuhan/about/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険窓口とは'});">ほけんの窓口<br class="pc">通信販売とは</a></li>
+		<li><a href="/tsuhan/learning/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険のいろは'});">保険のいろは</a></li>
+		<li><a href="/tsuhan/select/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険選びのコツ'});">保険選びのコツ</a></li>
+		<li><a href="/tsuhan/line/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '取扱保険会社'});">取扱保険会社</a></li>
+		<li><a href="/tsuhan/products/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '取扱商品一覧'});">取扱商品一覧</a></li>
+		<li><a href="/tsuhan/voice/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'お客さまの声'});">お客さまの声</a></li>
+		<li><a href="/tsuhan/faq/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'よくある質問'});">よくある質問</a></li>
+		<li><a href="/tsuhan/about/after.html" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'アフターケア'});">アフターケアの<br class="pc">ご案内</a></li>
+		-->
+		<li><a href="https://www.hokennomadoguchi.com/tsuhan/products/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険の種類から探す'});">保険の種類から探す</a></li>
+        <li class="sp"><a href="https://www.hokennomadoguchi.com/tsuhan/entry/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'ネットから申し込む'});">ネットから申し込む</a></li>
+        <li class="sp"><a href="https://www.hokennomadoguchi.com/tsuhan/index.html#simulator" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険料をシミュレーションする'});">保険料をシミュレーションする</a></li>
+		<li><a href="https://www.hokennomadoguchi.com/tsuhan/line/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険会社から探す'});">保険会社から探す</a></li>
+		<li><a href="https://www.hokennomadoguchi.com/tsuhan/ranks/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'ランキング'});">ランキング</a></li>
+		<li class="sp_none"><a href="https://www.hokennomadoguchi.com/tsuhan/index.html#simulator" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険料シミュレーション'});">保険料シミュレーション</a></li>
+		<li><a href="https://www.hokennomadoguchi.com/tsuhan/line/kokumin_nenkin_kikin.html" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '国民年金基金'});">国民年金基金</a></li>
+		<li><a href="https://www.hokennomadoguchi.com/tsuhan/select/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険選びのコツ'});">保険選びのコツ</a></li>
+		<li class="sp"><a href="https://www.hokennomadoguchi.com/tsuhan/faq/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'よくある質問'});">よくある質問</a></li>
+
+		<!--<li class="sp"><a href="http://www.hokennomadoguchi.com/?_ga=1.12185981.813613822.1469690905" target="_blank" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '店舗を探す'});">店舗を探す</a></li>-->
+		<li class="sp"><a href="https://www.hokennomadoguchi.com/tsuhan/sitemap/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'サイトマップ'});">サイトマップ</a></li>
+		<!--<li class="sp"><a href="https://mypage.hokennomadoguchi.com/login?_ga=1.11941245.813613822.1469690905" target="_blank" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'マイページ'});">マイページ</a></li>-->
+	</ul>
+</div>
+
+</div>
+
+
+<div id="fixed-header">
+	<div id="fixed-header-in" class="clearfix">
+		<h2 class="fixed_header_logo"><a href="../index.html" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': '固定ヘッダ','EventAction': 'InternalLink', 'EventLabel': 'ロゴ'});"><img class="pc" src="https://www.hokennomadoguchi.com/tsuhan/images/logo.png" alt="ほけんの窓口　通信販売"></a></h2>
+
+		<div class="header_tel_pc_inner">
+			<a href="../../index.html" target="_blank" onClick="ga('send', 'event', 'ヘッダ', 'header_top_bnr', 'オンライン保険相談');"><img src="https://www.hokennomadoguchi.com/tsuhan/images/header_top_bnr_sp.jpg" alt="おうちで気軽に ほけんの窓口 オンライン保険相談"></a>
+		</div>
+		<!-- 2020.04.29 ヘッダー変更 <div class="fixed_header_tel"><img src="/tsuhan/images/fixed_header_tel.png" alt=""/></div>-->
+	</div>
+</div>
+<!-- //////////////////// HEADER END //////////////////// -->
+
+<div id="breadcrumb">
+	<div class="breadcrumb">
+		<a href="../index.html">トップ</a>&gt;
+		<a href="https://www.hokennomadoguchi.com/tsuhan/line/index.html">取扱保険会社</a>&gt;
+		<span>エイチ・エス損害保険株式会社</span>
+	</div>
+</div>
+
+<!-- //////////////////// MAIN START //////////////////// -->
+<div id="main">	
+
+<!--//////////////////// CONTENT START ////////////////////-->
+<div id="content">
+<div id="request">
+	
+<section class="clearfix">
+	<h1>エイチ・エス損害保険株式会社</h1>
+
+	<img class="alignleft top_logo" src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_hs-songai.png" alt="エイチ・エス損害保険">
+	<p>所在地<br>
+	〒104-0053<br>東京都中央区晴海4-7-4　CROSS DOCK HARUMI 5F-A</p>
+</section>
+
+<div id="list_tbl">
+<section class="clearfix">
+	<h1 class="line_hoken_ttl">海外旅行保険</h1>
+	<h2>＜旅行を楽しまれる方の＞海外旅行保険</h2>
+	<table>
+		<tbody>
+			<tr class="tr-1">
+    <td rowspan="3">
+        <div class="title clearfix">
+            <h3>たびとも</h3>
+        </div>
+        <div class="logo">
+            <img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hs_tabitomo.png" alt="たびとも">
+        </div>
+        <div class="text">
+			<p>■"リーズナブルな保険料"で"充実の補償"がたびともの魅力！<br>
+			■プランは個人プラン・ファミリープラン・グループ旅行プランの3種類！ご家族・ご友人もご一緒に！<br>
+			■選べるお支払い方法！PayPayもキャリア決済（au・ソフトバンク）もOK！<br>
+			■LINE電話で海外サポートセンターへ無料通話OK！24時間365日日本語でサポート！<br>
+			■提携サービスとしてWi-Fiレンタル料20%割引をご用意！</p>
+            <p class="tar">LCD21-170</p>
+        </div>
+    </td>
+
+    <td class="check"><a href="https://www.hs-sonpo.co.jp/travel/?aid=B0085" onClick="ga('send', 'event',  '海外旅行保険', 'pc_outboundclick', 'エイチ・エス損害保険株式会社');" target="_blank"><span>商品概要</span></a></td>
+</tr>
+<tr class="tr-2">
+    <td class="check hovernone">
+    <div class="textbox"><span style="font-weight:bold;">契約可能日</span><br>当日〜90日前</div></td>
+</tr>
+<tr class="tr-3">
+    <td class="check"><a href="https://www.hs-sonpo.co.jp/travel/?aid=B0085" onClick="ga('send', 'event',  '海外旅行保険', 'pc_outboundclick', 'エイチ・エス損害保険株式会社');" target="_blank"><span>ネット申込<br>(お見積り)</span></a></td>
+</tr>		</tbody>
+	</table>
+</section>
+
+<section class="clearfix">
+<h1 class="line_hoken_ttl">国内旅行保険</h1>
+	<table>
+		<tbody>
+			<tr class="tr-1">
+    <td rowspan="3">
+        <div class="title clearfix">
+            <h3>国内旅行保険</h3>
+        </div>
+        <div class="logo">
+            <img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_hs-songai2line.png" alt="国内旅行保険">
+        </div>
+        <div class="text">
+            <p>・ネット完結でらくらく申し込み！出発当日までご契約可能！<br>
+				・1契約で10名様まで加入OK！ご家族・ご友人もご一緒に！<br>
+				・日帰り～6泊7日までの旅行に対応！キャンプや海水浴でもOK！<br>
+				・お支払い方法はクレジットカード払とPayPayをご用意！</p>
+            <p class="tar">LCD21-066</p>
+        </div>
+    </td>
+
+    <td class="check"><a href="https://www.hs-sonpo.co.jp/kokunai/?aid=B0085" onClick="ga('send', 'event',  '国内旅行保険', 'pc_outboundclick', 'エイチ・エス損害保険株式会社');" target="_blank"><span>商品概要</span></a></td>
+</tr>
+<tr class="tr-2">
+    <td class="check none"><p class="off"><span><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_check_unavailable.png" alt="資料を請求不可"></span></p></td>
+</tr>
+<tr class="tr-3">
+    <td class="check"><a href="https://www.hs-sonpo.co.jp/kokunai/?aid=B0085" onClick="ga('send', 'event',  '国内旅行保険', 'pc_outboundclick', 'エイチ・エス損害保険株式会社');" target="_blank"><span>ネット申込<br>(お見積り)</span></a></td>
+</tr>		</tbody>
+	</table>
+
+	<!--<div class="center body_submit_btn">
+		<span id="textArea"></span>
+		<a href="" class="link_btn lightblue request_btn"><i class="icomoon-play3"></i>チェックした商品をまとめてもらう</a>
+	</div>-->
+</section>
+
+<div id="guard">
+
+<div>
+<ul>
+<li>商品掲載基準　下記①②③の条件を満たす商品を掲載しています。<br>
+	①ほけんの窓口通信販売で取扱いが可能な商品<br>
+	②保険会社の募集文書審査が完了し、当サイトへの掲載が承認された商品<br>
+	③全国国民年金基金により当サイトへの掲載が承認された商品</li>
+<li>当サイトに掲載の各保険商品の保険料は一例です。年齢・性別・保険期間・保険料払込期間等で保険料は異なります。当サイトにおいて例示する各保険商品の保険金や解約返戻金（解約払戻金）などの受取額については、税金は考慮しておりません。</li>
+<li>当サイトにおける各商品のご説明は、商品の概要です。</li>
+<li>当サイトでご案内している商品は通信販売でお申込みのできる商品をご案内しております。 店頭でお申込みできる商品とは違いがある場合があります。</li>
+<li>当サイトは、ご案内している各保険商品に無条件で加入できることを示すものではありません。被保険者の健康状態等の告知等が必要であり、保険の引き受けにあたっては、保険会社の承諾が必要になります。</li>
+<li>当サイトで引用している各種データは、当社が信頼できると判断したものを使用しておりますが、その正確性・完全性等を保証するものではありません。</li>
+<li>当サイトでご案内している各保険商品の保険料・解約返戻金（解約払戻金）は、全て2022年5月2日現在です。</li>
+<li>契約年齢は、満年齢方式と保険年齢方式があり、保険会社によって使用している方式が異なります。詳しくは各保険商品のパンフレット・契約概要等でご確認ください。</li>
+<li>各保険商品の詳細につきましては、「パンフレット」「重要事項説明書」「契約概要」「注意喚起情報」「ご契約のしおり・ 約款」などをご確認ください。</li>
+<li>比較表示の対象としたすべての保険商品について、お客さまが「契約概要」を入手したいと希望したときに、その要望のあった「契約概要」を表示できる、あるいは、お客さまからの要望があれば遅滞なく郵送等で要望のあった「契約概要」を交付できるようにいたします。</li>
+<li>ご契約を途中で解約されると解約返戻金（解約払戻金）は多くの場合、払込保険料の合計額より少ない金額になります。特にご契約後短期間で解約されたときの解約返戻金（解約払戻金）は、まったくないか、ごくわずかです。なお、解約返戻金（解約払戻金）の額は、契約年齢・保険料払込期間・経過年月数・保険料払込年月数などにより異なります。</li>
+
+ </ul>
+
+<h4>〈保険契約の引き受けについて〉</h4>
+<p>「ほけんの窓口グループ株式会社」は募集代理店であり、生命保険、少額短期保険については保険契約締結の媒介を、損害保険については保険契約締結の媒介、もしくは保険契約締結の代理を行います。当社が保険契約締結の媒介を行う場合は、保険契約締結の代理権および告知受領権はありません。したがいまして、保険契約は、お客さまからの保険契約のお申込みに対して保険会社が承諾したときに有効に成立します。</p>
+
+<h4>【問い合わせ先】</h4>
+<p>ほけんの窓口グループ株式会社</p>
+<p>ＵＲＬ：<br><a href="https://www.hokennomadoguchi.co.jp/" target="_blank">https://www.hokennomadoguchi.co.jp/</a></p>
+
+<p>通信販売：<br>0120-497-721（通話無料）<br>受付時間/9:00～17:30</p>
+<p>Ｅメール：<br><a href="mailto:madoguchi-tsuhan@hokennomadoguchi.co.jp">madoguchi-tsuhan@hokennomadoguchi.co.jp</a></p>
+
+<p class="sp">※募集代理店 ほけんの窓口グループ株式会社、関連会社、グループ会社の社員は、 代理店 ほけんの窓口グループ株式会社（通信販売を含む）を通じてのお申込みができない商品があります。<br>
+ご不明な点がございましたら、ほけんの窓口 通信販売までお問い合わせくださいますようお願いいたします。</p>
+
+</div>
+
+<p class="pc">※募集代理店 ほけんの窓口グループ株式会社、関連会社、グループ会社の社員は、 代理店 ほけんの窓口グループ株式会社（通信販売を含む）を通じてのお申込みができない商品があります。<br>
+ご不明な点がございましたら、ほけんの窓口 通信販売までお問い合わせくださいますようお願いいたします。</p>
+
+</div><div class="detail_logo_list clearfix">
+	<dl>
+		<dt><h3>生命保険</h3></dt>
+		<dd>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/axa-direct-life.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_axa-direct.png" alt="アクサダイレクト生命保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/aflac.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_aflac-american.png" alt="アフラック"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/sbi-life.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_sbi.png" alt="SBI生命保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/fwd-life.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_fwd.png" alt="FWD生命保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/orixlife.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_orix.png" alt="オリックス生命保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/sumitomo-life.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_sumitomo.png" alt="住友生命保険相互会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/himawari-life.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_himawari.png" alt="SOMPOひまわり生命保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/zurichlife.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_zurich.png" alt="チューリッヒ生命"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/tmn-anshin.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_tmn-anshin.png" alt="東京海上日動あんしん生命保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/nanairolife.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_nanairolife.png" alt="なないろ生命保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/neofirst-life.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_neofirst.png" alt="ネオファースト生命保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/hanasaku.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hanasaku.png" alt="はなさく生命保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/msa-life.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_mitsuisumitomo-aioi.png" alt="三井住友海上あいおい生命保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/metlife.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_metlife.png" alt="メットライフ生命保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/medicarelife.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_medicare.png" alt="メディケア生命保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/lifenet-seimei.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_lifenet.png" alt="ライフネット生命保険株式会社"></a></div>
+		</dd>
+	</dl>
+</div>
+
+<div class="detail_logo_list clearfix">
+	<dl>
+		<dt><h3>損害保険</h3></dt>
+		<dd>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/anicom-sompo.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_anicom.png" alt="アニコム損害保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/axa-direct.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_axa-direct.png" alt="アクサ損害保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/edsp.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_edsp.png" alt="イーデザイン損害保険株式会社"></a></div>
+			<div><a href="hs-sonpo.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_hs-songai.png" alt="エイチ・エス損害保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/aig.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_aig.png" alt="AIG損害保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/au-sonpo.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_aute.png" alt="au損害保険株式会社"></a></div>
+            <div><a href="sbi-sonpo.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_sbi.png" alt="SBI損害保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/jihoken.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_j-i-syougai.png" alt="ジェイアイ傷害火災保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/secom-sonpo.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_secom.png" alt="セコム損害保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/ins-saison.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_ins-saison.png" alt="セゾン自動車火災保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/sonysonpo.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_sonysonpo.png" alt="ソニー損害保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/sjnk.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_hoken_sonpojapan.png" alt="損害保険ジャパン株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/tokiomarine-nichido.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_tokyo-kaido-nichido.png" alt="東京海上日動火災保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/ms-ins.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_mitsuisumitomo.png" alt="三井住友海上火災保険株式会社"></a></div>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/mitsui-direct.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sonpo_mitsui-direct.png" alt="三井ダイレクト損害保険株式会社"></a></div>
+		</dd>
+	</dl>
+</div>
+
+<div class="detail_logo_list clearfix">
+	<dl>
+		<dt><h3>少額短期保険</h3></dt>
+		<dd>
+			<div><a href="air-ins.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_tanki_air-ins.png" alt="アイアル少額短期保険株式会社"></a></div>
+		</dd>
+	</dl>
+</div>
+
+<div class="detail_logo_list clearfix">
+	<dl>
+		<dt><h3>全国国民年金基金</h3></dt>
+		<dd>
+			<div><a href="https://www.hokennomadoguchi.com/tsuhan/line/kokumin_nenkin_kikin.html"><img src="https://www.hokennomadoguchi.com/tsuhan/images//logo_kokumin_nenkin_kikin.png" alt="国民年金基金"></a></div>
+		</dd>
+	</dl>
+</div>
+
+
+</div>
+</div>
+</div>
+<!--//////////////////// CONTENT END ////////////////////-->
+
+</div>
+<!-- /#main -->
+<!-- //////////////////// MAIN END //////////////////// -->
+<!-- //////////////////// FOOTER START //////////////////// -->
+<!-- #to-top -->
+<div id="to-top">
+	<p class="top_scroll over">&nbsp;</p>
+</div>
+<!-- /#to-top -->
+
+
+<!--
+<p class="pc footer_top_bnr center">
+	<img src="/tsuhan/images/footer_tel_comp.png" alt="お電話でご相談">
+</p>
+-->
+
+<div id="footer">
+	
+	<!--
+	<div id="footer_in" class="sp start_hide clearfix">
+		<div id="footer_column_wrap">
+			<div class="sp footer_column column clearfix">
+				
+				<div class="footer_content_comp sp">
+					<a href="javascript:void(0)" onclick="ga('send', 'event', 'SPヘッダ', 'phone-number-tap', '電話リンクタップ（お電話でご相談）');"><img class="sp_header_tel sp" src="/tsuhan/images/sp_content_comp.png" alt="お電話でご相談"></a>
+				</div>
+		
+				<div class="column2">
+					<div>
+						<div>
+							<a href="http://www.hokennomadoguchi.com/" target="_blank" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': '店舗を探す'});"><img class="" src="/tsuhan/images/footer_content_search-shop.jpg" alt=""></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	-->
+	
+	<div class="footer_inner">
+		<ul id="footer_nav" class="clearfix">
+			<!--
+			<li><a href="http://www.hokennomadoguchi.com/company/" target="_blank">運営会社</a></li>
+			<li><a href="http://www.hokennomadoguchi.com/privacy/" target="_blank">個人情報保護方針</a></li>
+			<li><a href="http://www.hokennomadoguchi.co.jp/compliance/?_ga=1.4618931.1258739209.1432885058" target="_blank">コンプライアンス基本方針</a></li>
+			<li><a href="http://www.hokennomadoguchi.co.jp/inducement/?_ga=1.41760162.1258739209.1432885058" target="_blank">勧誘方針</a></li>
+			<li><a href="/tsuhan/sitemap/" target="_blank">サイトマップ</a></li>
+			<li><a href="http://www.hokennomadoguchi.com/" target="_blank">ほけんの窓口</a></li>
+			-->
+			<li><a href="../../company/index.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': '運営会社'});" target="_blank" class="blank">運営会社</a></li>
+			<li><a href="https://www.hokennomadoguchi.com/tsuhan/privacy/index.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': '個人情報保護方針'});" target="_self" class="blank">個人情報保護方針</a></li>
+			<li><a href="https://www.hokennomadoguchi.co.jp/compliance/?_ga=1.4618931.1258739209.1432885058" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': 'コンプライアンス基本方針'});" target="_blank" class="blank">コンプライアンス基本方針</a></li>
+			<li><a href="https://www.hokennomadoguchi.co.jp/inducement/?_ga=1.41760162.1258739209.1432885058" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': '勧誘方針'});" target="_blank" class="blank">勧誘方針</a></li>
+            <li><a href="https://www.hokennomadoguchi.co.jp/antisocial/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': '反社会的勢力に対する基本方針'});" target="_blank" class="blank">反社会的勢力に対する基本方針</a></li>
+			<li><a href="../../index.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': 'ほけんの窓口'});" target="_blank" class="blank">ほけんの窓口</a></li>
+			<li><a href="https://www.hokennomadoguchi.co.jp/cookie/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': 'Cookieポリシー'});" target="_blank" class="blank"><span class="txtEn">Cookie</span>ポリシー</a></li>
+		</ul>
+		
+		<p class="copyright">(c) HOKEN NO MADOGUCHI GROUP INC.</p>
+		
+		<!--<p class="footer_code">HM18-210630-196</p>-->
+	</div>
+	
+</div><!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWSLHB"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWSLHB');</script>
+<!-- End Google Tag Manager -->
+<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/galib_th.js"></script>
+<!-- //////////////////// FOOTER END //////////////////// -->
+</body>
+</html>

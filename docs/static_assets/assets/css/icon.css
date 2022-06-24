@@ -1,0 +1,59 @@
+@charset "utf-8";
+.c-icon-arrow{
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #4a4a4a;
+  border-right: 2px solid #4a4a4a;
+  transform: rotate(-45deg);
+}
+.c-icon-toggle{
+  position: relative;
+  width: 1em;
+  height: 1em;
+  display: block;
+  margin: auto;
+
+}
+.c-icon-toggle:before,
+.c-icon-toggle:after{
+  position: absolute;
+  content: '';
+  top: 0;
+  bottom: 0;
+  display: block;
+  margin: auto;
+
+  background-color: #4a4a4a;
+}
+
+.c-icon-toggle:before{
+  right: 0;
+  width: 1em;
+  height: 2px;
+
+}
+.c-icon-toggle:after{
+  right: calc(0.5em - 1px);
+  width: 2px;
+  height: 1em;
+}
+
+.c-icon-pdf {
+  display: inline-block;
+  margin: 0 5px 0 10px;
+  vertical-align: text-top;
+  width: 14px;
+  height: 14px;
+}
+.c-icon-blank {
+  display: inline-block;
+  margin: 0 5px 0 10px;
+  vertical-align: text-top;
+  width: 14px;
+  height: 14px;
+}
+
+.c-icon-pdf + .c-icon-blank {
+  margin-left: 5px;
+}

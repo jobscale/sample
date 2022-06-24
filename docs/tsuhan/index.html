@@ -1,0 +1,1313 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<!-- 1.maximum-scaleの数値を1にすると拡大縮小しなくなる -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes,minimal-ui" />
+<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/canonical.js"></script>
+
+	<meta charset="UTF-8">
+	<meta name="keywords" content="ほけんの窓口,資料請求,保険見直し,比較">
+	<meta name="description" content="ほけんの窓口 通信販売からはじまる「保険、はじめの一歩」選んで納得・安心の保険選び比較サイト。気になる保険を調べる、パンフレット一括取り寄せ、自宅でカンタンお申込み！もちろん保険の資料請求は無料！">
+
+	<!-- css_Area -->
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/js/slick.css">
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/js/modal-window.css">
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/css/reset.css">
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/css/layout.css">
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/css/common.css">
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/css/style.css">
+	<link rel="stylesheet" href="https://www.hokennomadoguchi.com/tsuhan/css/top.css">
+
+
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/jquery.bxslider.min.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/jquery.mobile.custom.min.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/slick.min.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/modal-window.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/common.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/pc-sp-accordion.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.cookie/1.4.0/jquery.cookie.min.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/fixHeight.js"></script>
+	<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/simulator.js"></script>
+
+	<!--
+	<script>
+	$(function() {
+		//スライドショー plugin::bxslider.js　使用しない場合はコメントアウト
+		//------------------------------------
+		$('#slide ul').bxSlider({
+			//mode:'fade',
+			auto:true,
+			speed:1000,
+			pause:7000,
+			pager:true,
+			controls:true,
+			captions: false,
+			touchEnabled: true,
+			infiniteLoop: true
+		});
+	});
+	</script>
+	-->
+
+	<script>
+	$(function(){
+		$('#ranking .slider').slick({
+			slidesToShow: 4,
+			slidesToScroll: 4,
+			infinite: false,
+			arrows: true,
+			dots: true,
+			responsive: [{
+				breakpoint: 640,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					infinite: false,
+					arrows: false,
+					dots: false,
+					centerMode: true,
+				}
+			}]
+		});
+	});
+	</script>
+
+	<script>
+	$(function(){
+		$('#top-navi .simu_modal').click(function(){
+			//console.log('open modal.');
+
+			var _args = {};
+			_args.width = '90%';
+			_args.height = '300px';
+			_args.close = 'button';
+			_args.href = '#simulator';
+
+			openModalWindow(_args);
+		});
+	});
+
+	function onOpenModalWindow(cont) {
+		$(cont).find('.simu_flow3 span').addClass('gray_btn');
+		$(cont).find('#SimulationChildAge').attr('disabled','');
+		$(cont).find('#SimulationChildGender').attr('disabled','');
+		$(cont).find('.simu_flow3 span').addClass('gray_btn');
+	}
+	</script>
+
+	<script>
+	$(function(){
+		//***シミュレーション*** 学資保険の選択以外では子供の入力できないように
+		$('.simu_flow3 span').addClass('gray_btn');
+		$('#SimulationCategoryID').change(function(){
+			var $pal = $(this).parents('form');
+			var $val = $(this).val();
+			// console.log($val);
+
+			if($val == 4) {
+				/*
+				$('#SimulationChildAge').removeAttr('disabled');
+				$('#SimulationChildGender').removeAttr('disabled');
+				$('.simu_flow3 span').removeClass('gray_btn');
+				*/
+				$pal.find('#SimulationChildAge').removeAttr('disabled');
+				$pal.find('#SimulationChildGender').removeAttr('disabled');
+				$pal.find('.simu_flow3 span').removeClass('gray_btn');
+			}else{
+				/*
+				$('#SimulationChildAge').attr('disabled','');
+				$('#SimulationChildGender').attr('disabled','');
+				$('.simu_flow3 span').addClass('gray_btn');
+				*/
+				$pal.find('#SimulationChildAge').attr('disabled','');
+				$pal.find('#SimulationChildGender').attr('disabled','');
+				$pal.find('.simu_flow3 span').addClass('gray_btn');
+			}
+		});
+	});
+	</script>
+
+	<script>
+	function WindowOpenThisSize(e){
+		var TargetURL = e.attr('href');
+		var TargetName = e.attr('name');
+		if(document.all){ // IE用
+			// 互換モードの場合はこちらを使用
+			var WindowWidth = document.documentElement.clientWidth - 200;
+			var WindowHeight = document.documentElement.clientHeight - 200;
+		}else{
+			var WindowWidth = innerWidth - 200;
+			var WindowHeight = innerHeight - 200;
+		}
+		window.open(TargetURL, TargetName, 'width='+WindowWidth+',height='+WindowHeight+",menubar=yes,toolbar=yes,scrollbars=yes,resizable=yes,location=yes");
+	}
+	</script>
+
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/backgroundSize.js"></script>
+	<script>
+	$(function() {
+	$('#present_area').css( "background-size", "cover" );
+	//$('#present_area').css( "background-size", "contain" );
+	});
+	</script>
+
+	<script type="text/javascript" src="js/selectivizr-min.js"></script>
+	<script type="text/javascript" src="js/PIE.js"></script>
+	<script>
+		$(function() {
+			if (window.PIE) {
+				//下記のセレクタにPIE.jsを適用させる
+				$('#header').each(function() {PIE.attach(this);});
+			}
+		});
+	</script>
+	<![endif]-->
+	<style type="text/css">
+	#ranking.division .title .link{ font-size: 77%; margin-top: -2px; }
+		@media all and (min-width: 640px){
+			#ranking.division .title .link{ float: none; }
+		}
+	#banners .block .grid_box .row .col,#banners .box { width: 310px; }
+	@media screen and (max-width: 640px){
+			#banners .block .grid_box .row_sp .col{ width: 50%; }
+			#banners .box { width: 100%; }
+	}
+	</style>
+
+	<link id="favicon" rel="shortcut icon" type="image/x-icon" href="https://www.hokennomadoguchi.com/tsuhan/images/favicon.png" />
+	<title>ほけんの窓口 通信販売 | ネットで保険比較・一括資料請求ができる保険選びサイト</title>
+</head>
+<body>
+
+<!-- //////////////////// HEADER START //////////////////// -->
+<script>
+$(function(){
+/*
+$('.sp_header_tel').click(function(){
+$('.fixed_black').fadeIn();
+$('.fixed_sp_tel').fadeIn();
+});
+
+
+$('.fixed_black').click(function(){
+	$(this).fadeOut();
+	$('.fixed_sp_tel').fadeOut();
+});
+
+$('.fixed_sp_tel .close ').click(function(){
+	$('.fixed_black').fadeOut();
+	$('.fixed_sp_tel').fadeOut();
+});
+*/
+});
+</script>
+
+
+<div id="header">
+
+
+<!-- SP_AB -->
+<!-- 2020.04.29 ヘッダー変更 <div class="sp_header_tel_top">
+	<div class="sp_header_tel_in">^^>
+		<!-- <img src="/tsuhan/images/header_call.png" width="320" height="50" alt="お電話でのお問合わせ・ご相談はこちら"> -->
+		<!--<a href="javascript:void(0)" onclick="ga('send', 'event', 'SPヘッダ', 'phone-number-tap', '電話リンクタップ（お電話でご相談）');"><img class="sp_header_tel sp" src="/tsuhan/images/sp_header_comp.png" width="380" alt="お電話でのお問合わせ・ご相談はこちら"></a>-->
+		<!-- 2020.04.29 ヘッダー変更 <a href="tel:0120-497-721" onClick="ga('send', 'event', 'SPヘッダ', 'phone-number-tap', '電話リンクタップ（お電話でご相談）');"><img class="sp_header_tel sp" src="/tsuhan/images/sp_header_comp.png" width="380" alt="お電話でのお問合わせ・ご相談はこちら"></a>
+	</div>
+</div>-->
+<!-- //SP_AB -->
+
+
+<div id="header_in" class="clearfix">
+
+	<!-- ↓↓↓ 2020.04.29 ヘッダー変更 ↓↓↓ -->
+	<div class="header_tel_pc">
+		<div class="header_tel_pc_inner">
+			<a href="../index.html" target="_blank" onClick="ga('send', 'event', 'ヘッダ', 'header_top_bnr', 'オンライン保険相談');"><img class="pc" src="https://www.hokennomadoguchi.com/tsuhan/images/header_top_bnr_pc.jpg" alt="おうちで気軽に ほけんの窓口 オンライン保険相談"><img class="sp" src="https://www.hokennomadoguchi.com/tsuhan/images/header_top_bnr_sp.jpg" alt="おうちで気軽に ほけんの窓口 オンライン保険相談"></a>
+		</div>
+    </div>
+    <!-- ↑↑↑ 2020.04.29 ヘッダー変更 ↑↑↑ -->
+
+	<h1 class="header_logo">
+		<a href="index.html" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ','EventAction': 'InternalLink', 'EventLabel': 'ロゴ'});">
+			<img class="pc" src="https://www.hokennomadoguchi.com/tsuhan/images/logo.png" alt="ほけんの窓口　通信販売">
+			<img class="sp" src="https://www.hokennomadoguchi.com/tsuhan/images/logo_sp.png" alt="ほけんの窓口　通信販売">
+		</a>
+	</h1>
+
+	<div class="head_request">
+		<!--
+		<div class="sp sp_header_tel">
+			<img src="/tsuhan/images/btn_sp_tel.png" alt="お問い合わせ・ご相談はこちら" width="33">
+		</div>
+		<div class="request_cart">
+			<a href="/tsuhan/carts/itemlist/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '資料請求リストを見る'});">
+				<img class="pc" src="/tsuhan/images/btn_cart.png" height="42" width="128" alt="資料請求リストを見る">
+				<img class="sp" src="/tsuhan/images/btn_sp_cart.png" alt="資料請求リストを見る" width="33">
+			</a>
+		</div>
+		-->
+		<div class="header_tel">
+			<img src="https://www.hokennomadoguchi.com/tsuhan/images/header_tel_2.png" alt="お問合せ・ご相談はこちら 営業時間 9:00～17:30 通話料無料 0120-497-721">
+		</div>
+
+		<div class="menu sp">
+			<img src="https://www.hokennomadoguchi.com/tsuhan/images/btn_sp_menu.png" alt="" width="33">
+		</div>
+
+		<div class="header_links pc">
+			<ul>
+				<!-- 2020.04.29 ヘッダー変更 <li><a href="https://www.hokennomadoguchi.com/" target="_blank" class="blank" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '店舗で相談する'});">店舗で相談する</a></li> -->
+				<li><a href="https://www.hokennomadoguchi.com/tsuhan/sitemap/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'サイトマップ'});">サイトマップ</a></li>
+				<li><a href="https://mypage.hokennomadoguchi.com/login?_ga=1.11941245.813613822.1469690905" target="_blank" class="mypage" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'マイページ'});">マイページ</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+    <!-- 2020.04.29 ヘッダー変更 <a href="https://www.hokennomadoguchi.com/" target="_blank" onclick="dataLayer.push({'event': 'FireEvent_InternalLink', 'EventCatagory': 'ヘッダ','EventAction': 'InternalLink', 'EventLabel': 'InternalLink｜電話で店舗に相談する'});">
+        <div id="consult_btn" class="over sp">電話で店舗に相談する</div>
+    </a>-->
+    <!-- 2021.01.08 ヘッダー変更 <div class="header_tel_sp sp">
+		<img src="/tsuhan/images/header_tel_2.png" alt="お問合せ・ご相談はこちら 営業時間 9:00～17:30 通話料無料 0120-497-721">
+	</div>-->
+	<!-- ↓↓↓2020.04.29 ヘッダー変更 ↓↓↓ -->
+	<div class="header_tel_sp sp">
+		<a href="tel:0120497721"><img src="https://www.hokennomadoguchi.com/tsuhan/images/header_tel_2.png" alt="お問合せ・ご相談はこちら 営業時間 9:00～17:30 通話料無料 0120-497-721"></a>
+	</div>
+	<!-- ↑↑↑ 2020.04.29 ヘッダー変更 ↑↑↑ -->
+
+</div>
+
+<div id="header_nav">
+	<ul class="clearfix">
+		<!--
+		<li><a href="/tsuhan/about/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険窓口とは'});">ほけんの窓口<br class="pc">通信販売とは</a></li>
+		<li><a href="/tsuhan/learning/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険のいろは'});">保険のいろは</a></li>
+		<li><a href="/tsuhan/select/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険選びのコツ'});">保険選びのコツ</a></li>
+		<li><a href="/tsuhan/line/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '取扱保険会社'});">取扱保険会社</a></li>
+		<li><a href="/tsuhan/products/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '取扱商品一覧'});">取扱商品一覧</a></li>
+		<li><a href="/tsuhan/voice/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'お客さまの声'});">お客さまの声</a></li>
+		<li><a href="/tsuhan/faq/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'よくある質問'});">よくある質問</a></li>
+		<li><a href="/tsuhan/about/after.html" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'アフターケア'});">アフターケアの<br class="pc">ご案内</a></li>
+		-->
+		<li><a href="https://www.hokennomadoguchi.com/tsuhan/products/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険の種類から探す'});">保険の種類から探す</a></li>
+        <li class="sp"><a href="https://www.hokennomadoguchi.com/tsuhan/entry/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'ネットから申し込む'});">ネットから申し込む</a></li>
+        <li class="sp"><a href="https://www.hokennomadoguchi.com/tsuhan/index.html#simulator" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険料をシミュレーションする'});">保険料をシミュレーションする</a></li>
+		<li><a href="https://www.hokennomadoguchi.com/tsuhan/line/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険会社から探す'});">保険会社から探す</a></li>
+		<li><a href="https://www.hokennomadoguchi.com/tsuhan/ranks/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'ランキング'});">ランキング</a></li>
+		<li class="sp_none"><a href="https://www.hokennomadoguchi.com/tsuhan/index.html#simulator" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険料シミュレーション'});">保険料シミュレーション</a></li>
+		<li><a href="https://www.hokennomadoguchi.com/tsuhan/line/kokumin_nenkin_kikin.html" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '国民年金基金'});">国民年金基金</a></li>
+		<li><a href="https://www.hokennomadoguchi.com/tsuhan/select/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '保険選びのコツ'});">保険選びのコツ</a></li>
+		<li class="sp"><a href="https://www.hokennomadoguchi.com/tsuhan/faq/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'よくある質問'});">よくある質問</a></li>
+
+		<!--<li class="sp"><a href="http://www.hokennomadoguchi.com/?_ga=1.12185981.813613822.1469690905" target="_blank" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': '店舗を探す'});">店舗を探す</a></li>-->
+		<li class="sp"><a href="https://www.hokennomadoguchi.com/tsuhan/sitemap/" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'サイトマップ'});">サイトマップ</a></li>
+		<!--<li class="sp"><a href="https://mypage.hokennomadoguchi.com/login?_ga=1.11941245.813613822.1469690905" target="_blank" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'ヘッダ', 'EventAction': 'InternalLink', 'EventLabel': 'マイページ'});">マイページ</a></li>-->
+	</ul>
+</div>
+
+</div>
+
+
+<div id="fixed-header">
+	<div id="fixed-header-in" class="clearfix">
+		<h2 class="fixed_header_logo"><a href="index.html" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': '固定ヘッダ','EventAction': 'InternalLink', 'EventLabel': 'ロゴ'});"><img class="pc" src="https://www.hokennomadoguchi.com/tsuhan/images/logo.png" alt="ほけんの窓口　通信販売"></a></h2>
+
+		<div class="header_tel_pc_inner">
+			<a href="../index.html" target="_blank" onClick="ga('send', 'event', 'ヘッダ', 'header_top_bnr', 'オンライン保険相談');"><img src="https://www.hokennomadoguchi.com/tsuhan/images/header_top_bnr_sp.jpg" alt="おうちで気軽に ほけんの窓口 オンライン保険相談"></a>
+		</div>
+		<!-- 2020.04.29 ヘッダー変更 <div class="fixed_header_tel"><img src="/tsuhan/images/fixed_header_tel.png" alt=""/></div>-->
+	</div>
+</div>
+<!-- //////////////////// HEADER END //////////////////// -->
+
+
+<div id="keyvisual">
+	<div class="inner">
+		<span class="image pc"><img src="https://www.hokennomadoguchi.com/tsuhan/images/keyvisual_top.png" alt="電話・ネットで保険選び"/></span>
+		<span class="image sp"><a href="tel:0120-497-721" onClick="ga('send', 'event', 'SPメインエリア', 'phone-number-tap', 'キービジュアル');"><img src="https://www.hokennomadoguchi.com/tsuhan/images/keyvisual_top.png" alt="電話・ネットで保険選び"/></a></span>
+	</div>
+</div>
+
+
+<!-- //////////////////// MAIN START //////////////////// -->
+<div id="main">
+
+	<!--//////////////////// CONTENT START ////////////////////-->
+	<div id="content">
+
+
+		<!-- #notice -->
+		<!-- *** 重要なお知らせ -> お知らせある場合に表示. ***-->
+		<!--
+		<div id="notice" class="division">
+			<span class="label">重要な<br class="sp">お知らせ</span>
+			<span class="detail" style="padding-bottom:0px;"><span style="font-size:1.3em; font-weight:bold;">営業時間のお知らせ</span><br>
+			2018年4月2日より営業時間を下記の通り変更させていただきます。<br>
+			お客さまにはご不便をおかけいたしますが、何卒よろしくお願いいたします。<br>
+			<span style="line-height:2em; font-size:1.4em;">営業時間　<span style="font-size:1.2em; font-weight:bold;">9:00～17:30</span></span></span>
+		</div>
+		-->
+		<!-- /#notice -->
+
+
+		<!-- #top-navi -->
+		<div id="top-navi" class="division">
+			<h4 class="title"><span class="label">ご相談はほけんの窓口にお任せください</span></h4>
+			<div class="block">
+				<div class="grid_box clearfix">
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<!--<a href="javascript:void(0);" class="over simu_modal">-->
+									<a href="index.html#simulator" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '保険料をシミュレーションする'});" class="over">
+										<div class="image pc"><img src="https://www.hokennomadoguchi.com/tsuhan/images/pic_tnavi_04_image.png" alt="保険料をシミュレーションする"/></div>
+										<div class="label"><span class="get">保険料を<br>シミュレーションする</span></div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/entry/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ネットから申し込む'});" class="over">
+										<div class="image pc"><img src="https://www.hokennomadoguchi.com/tsuhan/images/pic_tnavi_02_image.png" alt="ネットから申し込む"/></div>
+										<div class="label"><span class="link">ネットから申し込む</span></div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '保険を探す/資料をもらう'});" class="over">
+										<div class="image pc"><img src="https://www.hokennomadoguchi.com/tsuhan/images/pic_tnavi_03_image.png" alt="保険を探す/資料をもらう"/></div>
+										<div class="label"><span class="link">保険を探す/資料をもらう</span></div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/ranks/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ランキング一覧を見る'});" class="over">
+										<div class="image pc"><img src="https://www.hokennomadoguchi.com/tsuhan/images/pic_tnavi_05_image.png" alt="ランキング一覧を見る"/></div>
+										<div class="label"><span class="link">ランキング一覧を見る</span></div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- #top-navi -->
+
+		<!-- #oneclick-bnr -->
+		<div class="sp" style="width: 100%; margin: 0 auto; margin-bottom: 50px;">
+			<a href="https://www.edsp.co.jp/camp/lp/hokennomadoguchi5/tsuhan" target="_blank"><img src="https://www.hokennomadoguchi.com/tsuhan/images/oneclick_mitsumori_sp.png" alt="1クリック概算見積もり"/></a>
+		</div>
+		<div class="pc" style="width: 100%; max-width: 680px; margin: 0 auto; margin-bottom: 50px;">
+			<a href="https://www.edsp.co.jp/camp/lp/hokennomadoguchi5/tsuhan" target="_blank"><img src="https://www.hokennomadoguchi.com/tsuhan/images/oneclick_mitsumori.png" alt="1クリック概算見積もり"/></a>
+		</div>
+		<!-- #oneclick-bnr -->
+
+		<!-- #ranking -->
+		<div id="ranking" class="division">
+			<h4 class="title"><span class="label">ランキング&nbsp;&nbsp;</span><a href="https://www.hokennomadoguchi.com/tsuhan/ranks/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ランキング　一覧へ'});" class="link">一覧へ</a></h4>
+			<div class="block">
+
+<div class="read">2022年3月から2022年5月までにほけんの窓口通信販売で取扱い可能な商品の中からホームページより資料を請求されたパンフレット数のランキングです。<br>
+各保険商品についての優劣を決めるものではありません。商品改定等された場合、商品改定等前後のパンフレット数で集計しています。（ほけんの窓口通信販売調べ） </div>
+
+<div class="slider">
+	<!-- item 医療保険-->
+	<div class="item no01">
+		<div class="box">
+			<a href="https://www.axa-direct-life.co.jp/lifeweb/landingPage.do?id=994684440224022" onclick="javascript:WindowOpenThisSize($(this)); return false; dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ランキング 医療保険'});" class="over">
+				<span class="label">医療保険</span>
+				<span class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_syushin_medical.png" alt="アクサダイレクトの終身医療"/></span>
+			</a>
+				<!--<span class="gaiyo"><a href="/tsuhan/summary/AXD07-1.pdf" onclick="javascript:WindowOpenThisSize($(this)); return false;">商品概要</a></span>-->
+				<span class="capt">アクサダイレクト生命</span>
+		</div><!-- /box -->
+	</div><!-- /item -->
+
+    <!-- item 医療保険(女性専用)-->
+	<div class="item no01">
+		<div class="box">
+			<a href="https://www.hokennomadoguchi.com/tsuhan/products/orixlife/medical_cure_lady_next.html" onclick="javascript:WindowOpenThisSize($(this)); return false; dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ランキング 医療保険(女性専用)'});" class="over">
+				<span class="label">医療保険(女性専用)</span>
+				<span class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_orix_med_cure_lady_next.png" alt="医療保険 CURE Lady Next [キュア・レディ・ネクスト]"/></span>
+			</a>
+				<span class="capt">オリックス生命</span>
+		</div><!-- /box -->
+	</div><!-- /item -->
+
+	<!-- item 持病がある方向けの医療保険-->
+	<div class="item no01">
+		<div class="box">
+			<a href="https://www.axa-direct-life.co.jp/lifeweb/landingPage.do?id=964809513994045" onclick="javascript:WindowOpenThisSize($(this)); return false; dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ランキング 持病がある方向けの医療保険'});" class="over">
+				<span class="label">持病がある方向けの医療保険</span>
+				<span class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_disease_axad_hairiyasui.png" alt="アクサダイレクトのはいりやすい医療"/></span>
+			</a>
+				<span class="capt">アクサダイレクト生命</span>
+		</div><!-- /box -->
+	</div><!-- /item -->
+
+	<!-- item がん保険-->
+	<div class="item no01">
+		<div class="box">
+			<a href="https://www.axa-direct-life.co.jp/lifeweb/landingPage.do?id=985607171855007" onclick="javascript:WindowOpenThisSize($(this)); return false; dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ランキング がん保険'});" class="over">
+				<span class="label">がん保険</span>
+				<span class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_cancer_kachitto-syushin.png" alt="がん保険　アクサダイレクトのがん終身"/></span>
+			</a>
+				<!--<span class="gaiyo"><a href="/tsuhan/summary/AXD05-5.pdf" onclick="javascript:WindowOpenThisSize($(this)); return false;">商品概要</a></span>-->
+				<span class="capt">アクサダイレクト生命</span>
+		</div><!-- /box -->
+	</div><!-- /item -->
+
+	<!-- item 生命保険（終身タイプ）-->
+	<div class="item no01">
+		<div class="box">
+			<a href="https://www.axa-direct-life.co.jp/lifeweb/landingPage.do?id=972669302487056" onclick="javascript:WindowOpenThisSize($(this)); return false; dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ランキング 生命保険（終身タイプ）'});" class="over">
+				<span class="label">生命保険(終身タイプ)</span>
+				<span class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_syushin_kachitto.png" alt="アクサダイレクトの終身保険"/></span>
+			</a>
+				<!--<span class="gaiyo"><a href="/tsuhan/summary/AXD01-2.pdf" onclick="javascript:WindowOpenThisSize($(this)); return false;">商品概要</a></span>-->
+				<span class="capt">アクサダイレクト生命</span>
+
+		</div><!-- /box -->
+	</div><!-- /item -->
+
+	<!-- item 持病がある方向けの生命保険（終身タイプ）-->
+	<div class="item no01">
+		<div class="box">
+			<a href="https://www.hokennomadoguchi.com/tsuhan/products/aflac/disease-syushin_dotanademo.html" onclick="javascript:WindowOpenThisSize($(this)); return false; dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ランキング 持病をお持ちの方の生命保険（終身タイプ）'});" class="over">
+				<span class="label">持病がある方向けの生命保険(終身タイプ)</span>
+				<span class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_syushin_donatademo.png" alt="終身保険どなたでも"/></span>
+			</a>
+				<span class="capt">アフラック</span>
+		</div><!-- /box -->
+	</div><!-- /item -->
+
+	<!-- item 生命保険（定期タイプ）-->
+	<div class="item no01">
+		<div class="box">
+			<a href="https://www.sbilife.co.jp/lp/click_6750901.html" onclick="javascript:WindowOpenThisSize($(this)); return false; dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ランキング 生命保険（定期タイプ）'});" class="over">
+				<span class="label">生命保険(定期タイプ)</span>
+				<span class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_teiki_click_neo.png" alt="定期死亡保険　クリック定期!Neo"/></span>
+			</a>
+            	<!--<span class="gaiyo"><a href="/tsuhan/summary/AXD04-3.pdf" onclick="javascript:WindowOpenThisSize($(this)); return false;">商品概要</a></span>-->
+				<span class="capt">SBI生命</span>
+		</div><!-- /box -->
+	</div><!-- /item -->
+
+	<!-- item 就業不能保険-->
+	<div class="item no01">
+		<div class="box">
+		<a href="https://www.lifenet-seimei.co.jp/agent/product/disability/?cid=AG_HOMADO&m=M5&t=T160516&cl=CL1&lp=OR613" onclick="javascript:WindowOpenThisSize($(this)); return false; dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ランキング 就業不能保険'});" class="over">
+				<span class="label">就業不能保険</span>
+				<span class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_syugyohuno_hatarakuhito.png" alt="働く人への保険3（就業不能保険）"/></span>
+			</a>
+					<!--<span class="gaiyo"><a href="/tsuhan/summary/AXD09-01.pdf" onclick="javascript:WindowOpenThisSize($(this)); return false;">商品概要</a></span>-->
+				<span class="capt">ライフネット生命</span>
+		</div><!-- /box -->
+	</div><!-- /item -->
+
+</div><!-- /slider -->
+
+			</div><!-- /block -->
+		</div>
+		<!-- #ranking -->
+
+
+		<!-- #search-category -->
+		<div id="search-category" class="division">
+			<h4 class="title"><span class="label">保険の種類から探す</span></h4>
+			<div class="block">
+				<div class="grid_box clearfix">
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<!--box1-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/medical.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '医療保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_04.png" alt=""/></div>
+										<div class="label">医療保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+							<div class="col">
+								<!--box2-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/disease.html#iryo" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '持病がある方向けの保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_04.png" alt=""/></div>
+										<div class="label">持病がある<br class="sp">方向けの<br class="pc">医療保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+						</div><!--//row_sp1-->
+						<div class="row_sp">
+							<div class="col">
+								<!--box3-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/cancer.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'がん保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_05.png" alt=""/></div>
+										<div class="label">がん保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+							<div class="col">
+								<!--box4-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/disease.html#cancer" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '持病がある方向けの保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_05.png" alt=""/></div>
+										<div class="label">がんを経験された<br class="sp">方向けの<br class="pc">がん保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+						</div><!--//row_sp2-->
+					</div><!--//row-->
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<!--box5-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/life.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '生命保険(終身タイプ)'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_01.png" alt=""/></div>
+										<div class="label">生命保険<br class="sp">(終身タイプ)</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+							<div class="col">
+								<!--box6-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/disease.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '持病がある方向けの保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_01.png" alt=""/></div>
+										<div class="label">持病がある<br class="sp">方向けの<br class="pc">生命保険<br class="sp"><span class="sub">(終身タイプ)</span></div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+						</div><!--//row_sp1-->
+						<div class="row_sp">
+							<div class="col">
+								<!--box7-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/life.html#teiki" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '生命保険(定期タイプ)'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_02.png" alt=""/></div>
+										<div class="label">生命保険<br class="sp">(定期タイプ)</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+							<div class="col">
+								<!--box8-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/disease.html#teiki" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '持病がある方向けの保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_02.png" alt=""/></div>
+										<div class="label">持病がある<br class="sp">方向けの<br class="pc">生命保険<br class="sp"><span class="sub">(定期タイプ)</span></div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+						</div><!--//row_sp2-->
+					</div><!--//row-->
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<!--box9-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/life.html#syunyu" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '生命保険(収入保障タイプ)'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_03.png" alt=""/></div>
+										<div class="label">生命保険<br class="sp">(収入保障タイプ)</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+							<div class="col">
+								<!--box10-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/gakushi.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'こども保険(学資保険)'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_06.png" alt=""/></div>
+										<div class="label">こども保険<br class="sp">(学資保険)</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+						</div><!--//row_sp1-->
+						<div class="row_sp">
+							<div class="col">
+								<!--box11-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/disability.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '就業不能保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_10.png" alt=""/></div>
+										<div class="label">就業不能保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+							<div class="col">
+								<!--box13-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/nursing.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '介護保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_07.png" alt=""/></div>
+										<div class="label">介護保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+						</div><!--//row_sp2-->
+					</div><!--//row-->
+					<div class="row">
+						<div class="row_sp">
+
+							<div class="col">
+								<!--box13-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/pension.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '個人年金保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_20.png" alt=""/></div>
+										<div class="label">個人年金保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+
+							<div class="col">
+								<!--box14-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/car.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '自動車保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_11.png" alt=""/></div>
+										<div class="label">自動車保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+
+						</div><!--//row_sp1-->
+						<div class="row_sp">
+							<div class="col">
+								<!--box15-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/bike.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'バイク保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_19.png" alt=""/></div>
+										<div class="label">バイク保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+
+							<div class="col">
+								<!--box16-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/bicycle.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '自転車保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_12.png" alt=""/></div>
+										<div class="label">自転車保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+
+						</div><!--//row_sp2-->
+					</div><!--//row-->
+					<div class="row">
+						<div class="row_sp">
+
+							<div class="col">
+								<!--box17-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/travel.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '海外旅行保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_14.png" alt=""/></div>
+										<div class="label">海外旅行保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+
+							<div class="col">
+								<!--box18-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/travel02.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '国内旅行保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_18.png" alt=""/></div>
+										<div class="label">国内旅行保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+
+						</div><!--//row_sp1-->
+						<div class="row_sp">
+
+							<div class="col">
+								<!--box19-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/golf.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ゴルフ保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_17.png" alt=""/></div>
+										<div class="label">ゴルフ保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+
+							<div class="col">
+								<!--box20-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/accident.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '傷害保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_16.png" alt=""/></div>
+										<div class="label">傷害保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+
+						</div><!--//row_sp2-->
+					</div><!--//row-->
+					<div class="row">
+						<div class="row_sp">
+
+							<div class="col">
+								<!--box21-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/kasai.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '火災保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_13.png" alt=""/></div>
+										<div class="label">火災保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+
+							<div class="col">
+								<!--box22-->
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/products/list/pet.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ペット保険'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_scategory_15.png" alt=""/></div>
+										<div class="label">ペット保険</div>
+									</a>
+								</div><!--//box-->
+							</div><!--//col-->
+						</div><!--//row_sp1-->
+						<div class="row_sp">
+							<div class="col">
+							</div><!--//col-->
+							<div class="col">
+							</div><!--//col-->
+						</div><!--//row_sp2-->
+					</div><!--//row-->
+				</div>
+			</div>
+		</div>
+		<!-- #search-category -->
+
+
+		<!-- #search-company -->
+		<div id="search-company" class="division">
+			<h4 class="title"><span class="label">保険会社から探す</span></h4>
+			<div class="block">
+				<h5 class="stitle"><span>生命保険</span></h5>
+				<div class="grid_box clearfix">
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/axa-direct-life.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'アクサダイレクト生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a02.png" alt="アクサダイレクト生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/aflac.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'アフラック'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a04.png" alt="アフラック"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/sbi-life.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'SBI生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a15.png" alt="SBI生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/aig-fuji-life.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'FWD富士生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a05.png" alt="FWD生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/orixlife.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'オリックス生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a06.png" alt="オリックス生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/sumitomo-life.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '住友生命保険相互会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a20.png" alt="住友生命保険相互会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/himawari-life.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'SOMPOひまわり生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a07.png" alt="SOMPOひまわり生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/zurichlife.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'チューリッヒ生命'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a08.png" alt="チューリッヒ生命"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/tmn-anshin.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '東京海上日動あんしん生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a09.png" alt="東京海上日動あんしん生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/nanairolife.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'なないろ生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a21.png" alt="なないろ生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/neofirst-life.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ネオファースト生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a19.png" alt="ネオファースト生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/hanasaku.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'はなさく生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a22.png" alt="はなさく生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/msa-life.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '三井住友海上あいおい生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a11.png" alt="三井住友海上あいおい生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/metlife.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'メットライフ生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a12.png" alt="メットライフ生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/medicarelife.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'メディケア生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a13.png" alt="メディケア生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/lifenet-seimei.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ライフネット生命保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a14.png" alt="ライフネット生命保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="block">
+				<h5 class="stitle"><span>損害保険</span></h5>
+				<div class="grid_box clearfix">
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/anicom-sompo.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'アニコム損害保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b16.png" alt="アニコム損害保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/axa-direct.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'アクサ損害保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b01.png" alt="アクサ損害保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/edsp.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'イーデザイン損害保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a18.png" alt="イーデザイン損害保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="line/hs-sonpo.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'エイチ・エス損害保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b02.png" alt="エイチ・エス損害保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/aig.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'AIG損害保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b03.png" alt="AIG損害保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/au-sonpo.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'au損害保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b04.png" alt="au損害保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="line/sbi-sonpo.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'SBI損害保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a16.png" alt="SBI損害保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/jihoken.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ジェイアイ傷害火災保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b05.png" alt="ジェイアイ傷害火災保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/secom-sonpo.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'セコム損害保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b06.png" alt="セコム損害保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/ins-saison.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'セゾン自動車火災保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b15.png" alt="セゾン自動車火災保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/sonysonpo.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'ソニー損害保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b07.png" alt="ソニー損害保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/sjnk.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '損害保険ジャパン株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b08.png" alt="損害保険ジャパン株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/tokiomarine-nichido.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '東京海上日動火災保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b10.png" alt="東京海上日動火災保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/ms-ins.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '三井住友海上火災保険株式会'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b13.png" alt="三井住友海上火災保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/mitsui-direct.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '三井ダイレクト損害保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_b14.png" alt="三井ダイレクト損害保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="block">
+				<h5 class="stitle"><span>少額短期保険</span></h5>
+				<div class="grid_box clearfix">
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="line/air-ins.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'アイアル少額短期保険株式会社'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a17.png" alt="アイアル少額短期保険株式会社"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="block">
+				<h5 class="stitle"><span>全国国民年金基金</span></h5>
+				<div class="grid_box clearfix">
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/line/kokumin_nenkin_kikin.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '全国国民年金基金'});" class="over">
+										<div class="image"><img src="https://www.hokennomadoguchi.com/tsuhan/images/logo_scompany_a23.png" alt="全国国民年金基金"/></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- #search-company -->
+
+
+		<!-- #simulator -->
+		<div id="simulator">
+			<div id="column1_simulation">
+				<h2><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_calc_white.png">保険料シミュレーション<span class="ttl_simulation">気になる保険料をかんたん試算</span></h2>
+				<div class="column1_simulation clearfix">
+					<dl class="simulation">
+						<dd>
+							<form action="https://www.hokennomadoguchi.com/tsuhan/items" class="clearfix" method="post" accept-charset="utf-8">
+								<div class="simu_flow_ttl clearfix">
+									<div class="simu_flow1"><span>1</span>保険種類を選ぶ</div>
+									<div class="simu_flow2"><span>2</span>ご契約者様</div>
+									<div class="simu_flow3"><span>3</span>お子様</div>
+								</div>
+								<div class="simu_flow1">
+									<p class="sp"><span>1</span>保険種類を選ぶ</p>
+									<select name="data[Simulation][CategoryID]" id="SimulationCategoryID">
+									</select>
+								</div>
+								<div class="simu_flow2">
+									<p class="sp"><span>2</span>ご契約者様</p>
+									<select name="data[Simulation][age]" class="" id="SimulationAge">
+									</select>
+									<select name="data[Simulation][gender]" class="" id="SimulationGender">
+									</select>
+								</div>
+								<div class="simu_flow3">
+									<p class="sp"><span>3</span>お子様</p>
+									<select name="data[Simulation][child_age]" class="" id="SimulationChildAge" disabled="disabled">
+									</select>
+									<select name="data[Simulation][child_gender]" class="" id="SimulationChildGender" disabled="disabled">
+									</select>
+								</div>
+								<input type="submit" name="" value="保険料比較!" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '保険料試算'});">
+								<p class="near_birthday">お誕生日が近い方はこちら(2ヶ月以内) &gt;</p>
+								<img id="near_birthday_comment" src="https://www.hokennomadoguchi.com/tsuhan/images/comment_near_birthday.png" alt="" width="330"> <img id="near_birthday_comment_sp" src="https://www.hokennomadoguchi.com/tsuhan/images/comment_near_birthday_sp.png" alt=""> <small class="simulation_caption">※一部の保険会社については準備中です。準備が整いましたら掲載いたします。</small>
+							</form>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<!-- /#simulator -->
+
+
+		<!-- #information -->
+		<div id="information" class="division">
+			<div class="block">
+
+				<div class="separate_box">
+					<div class="row">
+						<div class="col">
+							<h4 class="title"><span class="label">お知らせ</span></h4>
+<!--トップお知らせ　※表示4件-->
+<ul class="list">
+
+	<li><span class="date">2022年6月6日</span><a href="https://www.hokennomadoguchi.com/tsuhan/ranks/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '2022年3月から2022年5月のランキングが発表されました(ほけんの窓口通信販売調べ)'});">2022年3月から2022年5月のランキングが発表されました(ほけんの窓口通信販売調べ)</a></li>
+
+	<li><span class="date">2022年5月16日</span><a href="https://www.hokennomadoguchi.com/tsuhan/ranks/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '2022年2月から2022年4月のランキングが発表されました(ほけんの窓口通信販売調べ)'});">2022年2月から2022年4月のランキングが発表されました(ほけんの窓口通信販売調べ)</a></li>
+
+	<li><span class="date">2021年10月6日</span><a href="https://www.hokennomadoguchi.com/tsuhan/line/zurichlife.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'チューリッヒ生命保険の就業不能保険、「くらすプラスZ」を掲載しました。'});">チューリッヒ生命保険の就業不能保険、「くらすプラスZ」を掲載しました。</a></li>
+
+	<li><span class="date">2021年10月1日</span><a href="https://www.hokennomadoguchi.com/tsuhan/line/nanairolife.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'なないろ生命の取扱いを開始いたしました'});">なないろ生命の取扱いを開始いたしました</a></li>
+
+</ul>						</div>
+						<div class="col">
+							<h4 class="title"><span class="label">きっかけ・気になることから選ぶ</span><a href="https://www.hokennomadoguchi.com/tsuhan/select/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'きっかけ・気になることから選ぶ　一覧へ'});" class="link">一覧へ</a></h4>
+							<ul class="list">
+								<!--<li><a href="/tsuhan/select/reason/purpose08.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '万が一何かあったらどうしよう'});">万が一何かあったらどうしよう</a></li>-->
+								<li><a href="https://www.hokennomadoguchi.com/tsuhan/select/reason/woman02.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '将来の妊娠・出産のために保険に入った方がいいの？'});">将来の妊娠・出産のために保険に入った方がいいの？</a></li>
+								<li><a href="https://www.hokennomadoguchi.com/tsuhan/select/reason/review03.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '保険の更新案内が来た'});">保険の更新案内が来た</a></li>
+								<li><a href="https://www.hokennomadoguchi.com/tsuhan/select/reason/parent01.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '親が心配。高齢でも申込みできる保険あるかな'});">親が心配。高齢でも申込みできる保険あるかな</a></li>
+								<li><a href="https://www.hokennomadoguchi.com/tsuhan/select/reason/disease05.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '過去にがんと診断されたけど加入できる保険はあるの？'});">過去にがんと診断されたけど加入できる保険はあるの？</a></li>
+							</ul>
+
+							<h4 class="title" style="margin-top: 30px;"><span class="label">保険コラム</span><a href="https://www.hokennomadoguchi.com/tsuhan/column/index.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '保険コラム　一覧へ'});" class="link">一覧へ</a></h4>
+							<ul class="list">
+								<li><a href="https://www.hokennomadoguchi.com/tsuhan/column/woman01.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '女性向け保険って？'});">女性向け保険って？</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- #information -->
+
+
+		<!-- #banners -->
+		<div id="banners" class="division" style="margin-bottom: 30px;">
+			<div class="block">
+				<div class="grid_box clearfix">
+					<div class="row">
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/learning/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': '保険のいろは'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_banners_01.png" alt="保険のいろは"/></div>
+										<div class="label"><span>保険のいろは</span></div>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/faq/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'よくある質問'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_banners_02.png" alt="よくある質問"/></div>
+										<div class="label"><span>よくある質問</span></div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row_sp">
+							<div class="col">
+								<div class="box">
+									<a href="https://www.hokennomadoguchi.com/tsuhan/voice/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'メインエリア', 'EventAction': 'InternalLink', 'EventLabel': 'お客さまの声'});" class="over">
+										<div class="icon"><img src="https://www.hokennomadoguchi.com/tsuhan/images/ico_banners_03.png" alt="お客さまの声"/></div>
+										<div class="label"><span>お客さまの声</span></div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- #banners -->
+		<!--<p class="tar top_sentences">HM19-220630-1309</p>-->
+	</div>
+	<!--//////////////////// CONTENT END ////////////////////-->
+	</div>
+</div>
+<!-- //////////////////// MAIN END //////////////////// -->
+
+<!-- //////////////////// FOOTER START //////////////////// -->
+<!-- #to-top -->
+<div id="to-top">
+	<p class="top_scroll over">&nbsp;</p>
+</div>
+<!-- /#to-top -->
+
+
+<!--
+<p class="pc footer_top_bnr center">
+	<img src="/tsuhan/images/footer_tel_comp.png" alt="お電話でご相談">
+</p>
+-->
+
+<div id="footer">
+	
+	<!--
+	<div id="footer_in" class="sp start_hide clearfix">
+		<div id="footer_column_wrap">
+			<div class="sp footer_column column clearfix">
+				
+				<div class="footer_content_comp sp">
+					<a href="javascript:void(0)" onclick="ga('send', 'event', 'SPヘッダ', 'phone-number-tap', '電話リンクタップ（お電話でご相談）');"><img class="sp_header_tel sp" src="/tsuhan/images/sp_content_comp.png" alt="お電話でご相談"></a>
+				</div>
+		
+				<div class="column2">
+					<div>
+						<div>
+							<a href="http://www.hokennomadoguchi.com/" target="_blank" onClick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': '店舗を探す'});"><img class="" src="/tsuhan/images/footer_content_search-shop.jpg" alt=""></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	-->
+	
+	<div class="footer_inner">
+		<ul id="footer_nav" class="clearfix">
+			<!--
+			<li><a href="http://www.hokennomadoguchi.com/company/" target="_blank">運営会社</a></li>
+			<li><a href="http://www.hokennomadoguchi.com/privacy/" target="_blank">個人情報保護方針</a></li>
+			<li><a href="http://www.hokennomadoguchi.co.jp/compliance/?_ga=1.4618931.1258739209.1432885058" target="_blank">コンプライアンス基本方針</a></li>
+			<li><a href="http://www.hokennomadoguchi.co.jp/inducement/?_ga=1.41760162.1258739209.1432885058" target="_blank">勧誘方針</a></li>
+			<li><a href="/tsuhan/sitemap/" target="_blank">サイトマップ</a></li>
+			<li><a href="http://www.hokennomadoguchi.com/" target="_blank">ほけんの窓口</a></li>
+			-->
+			<li><a href="../company/index.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': '運営会社'});" target="_blank" class="blank">運営会社</a></li>
+			<li><a href="https://www.hokennomadoguchi.com/tsuhan/privacy/index.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': '個人情報保護方針'});" target="_self" class="blank">個人情報保護方針</a></li>
+			<li><a href="https://www.hokennomadoguchi.co.jp/compliance/?_ga=1.4618931.1258739209.1432885058" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': 'コンプライアンス基本方針'});" target="_blank" class="blank">コンプライアンス基本方針</a></li>
+			<li><a href="https://www.hokennomadoguchi.co.jp/inducement/?_ga=1.41760162.1258739209.1432885058" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': '勧誘方針'});" target="_blank" class="blank">勧誘方針</a></li>
+            <li><a href="https://www.hokennomadoguchi.co.jp/antisocial/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': '反社会的勢力に対する基本方針'});" target="_blank" class="blank">反社会的勢力に対する基本方針</a></li>
+			<li><a href="../index.html" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': 'ほけんの窓口'});" target="_blank" class="blank">ほけんの窓口</a></li>
+			<li><a href="https://www.hokennomadoguchi.co.jp/cookie/" onclick="dataLayer.push({'event': 'FireEvent', 'EventCatagory': 'フッタ', 'EventAction': 'InternalLink', 'EventLabel': 'Cookieポリシー'});" target="_blank" class="blank"><span class="txtEn">Cookie</span>ポリシー</a></li>
+		</ul>
+		
+		<p class="copyright">(c) HOKEN NO MADOGUCHI GROUP INC.</p>
+		
+		<!--<p class="footer_code">HM18-210630-196</p>-->
+	</div>
+	
+</div><!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWSLHB"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWSLHB');</script>
+<!-- End Google Tag Manager -->
+<script type="text/javascript" src="https://www.hokennomadoguchi.com/tsuhan/js/galib_th.js"></script>
+<!-- //////////////////// FOOTER END //////////////////// -->
+</body>
+</html>
